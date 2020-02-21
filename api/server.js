@@ -1,0 +1,29 @@
+const express = require("express");
+const helmet = require("helmet");
+const cors = require("cors");
+
+const authRouter = require("../auth/auth-router.js");
+const userRouter = require("../users/user-router.js");
+const restricted = require("../middleware/restricted-middleware.js");
+
+const server = express();
+
+server.use(helmet());
+server.use(cors());
+server.use(express.json());
+
+server.use("/api/auth", authRouter);
+server.use("/api/users", restricted, userRouter);
+
+server.use((err, req, res, next) => {
+  console.log("Error:", err);
+  res.status(500).json({
+    message: "Something went wrong. Try again later"
+  });
+});
+
+server.get("/", (req, res) => {
+  res.status(200).json({ message: "It's alive" });
+});
+
+module.exports = server;
