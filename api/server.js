@@ -9,14 +9,14 @@ const restricted = require("../middleware/restricted-middleware.js");
 const server = express();
 
 server.use(helmet());
-server.use(cors());
 server.use(express.json());
+server.use(cors());
 
 server.use("/api/auth", authRouter);
 server.use("/api/users", restricted, userRouter);
 
 server.use((err, req, res, next) => {
-  console.log("Error:", err);
+  console.log("Error:", err.message);
   res.status(500).json({
     message: "Something went wrong. Try again later"
   });
