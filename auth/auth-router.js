@@ -9,10 +9,13 @@ const {
   isUsernameUnique,
   isEmailUnique
 } = require("../middleware/isUserUnique.js");
+const { loginFields } = require("../middleware/loginFields.js");
+const { registerFields } = require("../middleware/registerFields.js");
 
 // register a new user
 router.post(
   "/register",
+  registerFields,
   isUsernameUnique,
   isEmailUnique,
   async (req, res, next) => {
@@ -24,7 +27,7 @@ router.post(
       const newUser = await Users.add(user);
       const token = signToken(newUser);
 
-      res.status(201).json({ user: newUser, token: token });
+      res.status(201).json({ new_user: newUser, token: token });
     } catch (err) {
       next(err);
     }
@@ -32,7 +35,7 @@ router.post(
 );
 
 // user login route
-router.post("/login", async (req, res, next) => {
+router.post("/login", loginFields, async (req, res, next) => {
   try {
     let { username, password } = req.body;
     const user = await Users.findBy({ username }).first();
@@ -55,7 +58,8 @@ router.post("/login", async (req, res, next) => {
 // create token function
 function signToken(user) {
   const payload = {
-    user
+    id: user.id,
+    username: user.username
   };
 
   const options = {
