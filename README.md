@@ -10,7 +10,8 @@ Register a new user:
 
 POST api/auth/register
 
-Required fields: username, password, first_name, last_name, email.
+Required fields: username, password, first_name, last_name, email
+
 Optional Fields: profile_image_url
 
 Expected Request Body:
@@ -30,7 +31,7 @@ Returns:
 {
     "new_user": {
         "id": 1,
-        "username": "Demo1",
+        "username": "user1",
         "password": "$2a$10$kJw66/2Yb1xnUIczPAXIze5hiyjCnxTebH1oGukuxWeYvVp8aRrMG",
         "first_name": "Patrick",
         "last_name": "Replogle",
@@ -97,7 +98,7 @@ Returns:
 
 ```
 {
- [1]
+ 1
 }
 ```
 
