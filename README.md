@@ -10,7 +10,7 @@ Base url: ""
 
 Register a new user:
 
-POST api/auth/register
+POST /api/auth/register
 
 Required fields: username, password, first_name, last_name, email
 
@@ -46,7 +46,7 @@ Returns:
 
 Login user endpoint:
 
-POST /auth/login
+POST /api/auth/login
 
 Expected Request Body:
 ```
@@ -70,7 +70,7 @@ Returns:
 
 Update user ***Logged in user can only update their own account***
 
-PUT /api/users
+PUT /api/users/:id
 
 ```
 {
