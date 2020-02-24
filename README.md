@@ -95,7 +95,7 @@ Returns:
   "profile_image_url": "http://www.image_url.com"
 }
 ```
-Delete user -Logged in user can only delete their own account-:
+Delete user -Logged in user can only delete their own account-
 
 DELETE /api/users/:id
 
