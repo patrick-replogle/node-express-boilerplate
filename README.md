@@ -1,5 +1,7 @@
 # Node-Express-Boilerplate
-Back end repository for "":
+
+Back end repository for: ""
+
 Base url: ""
 
 ## API Routes
@@ -43,6 +45,7 @@ Returns:
 ```
 
 Login user endpoint:
+
 POST /auth/login
 
 Expected Request Body:
@@ -66,6 +69,7 @@ Returns:
 ## User Endpoints
 
 Update user ***Logged in user can only update their own account***
+
 PUT /api/users
 
 ```
@@ -92,6 +96,7 @@ Returns:
 }
 ```
 Delete user***Logged in user can only delete their own account***:
+
 DELETE /api/users/:id
 
 Returns:
