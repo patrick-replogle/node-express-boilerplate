@@ -8,7 +8,7 @@ exports.seed = function(knex, Promise) {
       last_name: "Replogle",
       email: "fakeuser1@gmail.com",
       password: bcrypt.hashSync("password", 10),
-      admin: true
+      profile_image_url: "http://somethinggoeshere.com"
     },
     {
       username: "user2",
@@ -16,7 +16,7 @@ exports.seed = function(knex, Promise) {
       last_name: "Gonzalez",
       email: "fakeuser2@gmail.com",
       password: bcrypt.hashSync("password", 10),
-      admin: false
+      profile_image_url: "http://somethinggoeshere.com"
     }
   ]);
 };
