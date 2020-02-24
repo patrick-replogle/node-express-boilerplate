@@ -97,9 +97,7 @@ DELETE /api/users/:id
 Returns:
 
 ```
-{
  1
-}
 ```
 
 
