@@ -44,6 +44,8 @@ router.post("/login", loginFields, async (req, res, next) => {
       const token = signToken(user);
 
       res.status(200).json({
+        id: user.id,
+        username: user.username,
         message: `Welcome ${user.username}!`,
         token: token
       });

@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 
 function decodeToken(req, res, next) {
   let decoded = jwt.decode(req.headers.authorization);
-  const { id } = decoded.user;
+  const { id } = decoded;
   if (Number(req.params.id) === Number(id)) {
     next();
   } else {
