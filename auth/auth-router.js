@@ -1,16 +1,15 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
 
 const Users = require("../users/user-model.js");
 
-const { jwtSecret } = require("../config/secrets.js");
 const {
   isUsernameUnique,
   isEmailUnique
 } = require("../middleware/isUserUnique.js");
 const { loginFields } = require("../middleware/loginFields.js");
 const { registerFields } = require("../middleware/registerFields.js");
+const { signToken } = require("../utils/signToken.js");
 
 // register a new user
 router.post(
@@ -56,19 +55,5 @@ router.post("/login", loginFields, async (req, res, next) => {
     next(err);
   }
 });
-
-// create token function
-function signToken(user) {
-  const payload = {
-    id: user.id,
-    username: user.username
-  };
-
-  const options = {
-    expiresIn: "7d"
-  };
-
-  return jwt.sign(payload, jwtSecret, options);
-}
 
 module.exports = router;
